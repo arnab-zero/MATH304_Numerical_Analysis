@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define F(x) (x*x - 2)
-#define dF(x) (2*x)
+#define F(x) (x*x - 5*x + 6)
+#define dF(x) (2*x - 5)
 #define initialGuess 1.0
 #define tol 1e-20
 
@@ -14,10 +14,10 @@ int main(void){
         x2 = x1 - F(x1)/dF(x1);
         double fx2 = F(x2);
 
-        printf("itr: %d\t\tprevx: %lf\t\tnewx: %lf\t\tprevF: %lf\t\tnewF: %lf\t\tInterval: %lf\t\t", i+1, x1, x2, F(x1), F(x2), abs(fx1-fx2));
+        printf("itr: %d\t\tprevx: %lf\t\tnewx: %lf\t\tprevF: %lf\t\tnewF: %lf\t\tdifference: %lf\t\t", i+1, x1, x2, F(x1), F(x2), fabs(fx1-fx2));
         printf("\n");
 
-        if(abs(fx1-fx2) < tol)
+        if(fabs(fx1-fx2) < tol)
         {
             printf("Root to the equation: %lf", x2);
             return 0;
